@@ -1,5 +1,4 @@
-
-import { Module } from "@nestjs/common";
+import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
@@ -9,4 +8,3 @@ import { UserService } from './user.service';
     providers: [UserService],
 })
 export class UserModule {}
-

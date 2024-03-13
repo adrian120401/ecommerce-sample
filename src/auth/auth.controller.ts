@@ -5,15 +5,13 @@ import { AuthService } from './auth.service';
 export class AuthController {
     constructor(private authService: AuthService) {}
 
-
     @Post('signup')
-    signup(/* @Body() body */) {
-        this.authService.signup();
+    signup(): object {
+        return this.authService.signup();
     }
 
     @Post('login')
-    login(/* @Body() body */) {
-        this.authService.login();    
+    login(): object {
+        return this.authService.login();
     }
-
 }
