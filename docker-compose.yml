@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  pg-db-ecommerce:
+  db-dev:
     image: postgres:15.3
     restart: always
     environment:
