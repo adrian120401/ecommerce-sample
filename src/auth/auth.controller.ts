@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
 import { Public } from 'src/decorators/public.decorator';
+import { RefreshTokenDto } from './dto/refresh.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -24,5 +25,11 @@ export class AuthController {
     @Post('activate')
     activate(@Query('token') token: string): object {
         return this.authService.activate(token);
+    }
+
+    @Public()
+    @Post('refresh')
+    refresh(@Body() dto: RefreshTokenDto): object {
+        return this.authService.refresh(dto);
     }
 }

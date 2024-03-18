@@ -27,6 +27,7 @@ model User {
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @default(now())
   activationToken String?     @unique
+  refreshToken String?        @unique
 
   @@map("users")
 }

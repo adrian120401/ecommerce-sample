@@ -10,6 +10,9 @@ export class UserService {
     async getMe(req: Request) {
         const user = await this.prisma.user.findUnique({ where: { id: req['user'].sub } });
         delete user.password;
+        delete user.activationToken;
+        delete user.refreshToken;
+
         return { user: user };
     }
 
@@ -19,6 +22,8 @@ export class UserService {
             data: dto,
         });
         delete user.password;
+        delete user.activationToken;
+        delete user.refreshToken;
 
         return { user: user };
     }
@@ -28,6 +33,12 @@ export class UserService {
             throw new UnauthorizedException();
         }
         const users = await this.prisma.user.findMany();
+
+        users.map((user) => {
+            delete user.password;
+            delete user.activationToken;
+            delete user.refreshToken;
+        });
 
         return { users: users };
     }
