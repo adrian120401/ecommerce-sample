@@ -31,3 +31,11 @@ model User {
 
   @@map("users")
 }
+
+model Category {
+  id           String         @id @default(uuid())
+  name         String         @unique
+  description  String?
+
+  @@map("categories")
+}

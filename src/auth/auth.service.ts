@@ -38,8 +38,8 @@ export class AuthService {
 
     async login(dto: LoginDto) {
         const user = await this.prisma.user.findUnique({ where: { email: dto.email } });
-        if (!user.isActive) throw new ForbiddenException('User not activated');
         if (!user) throw new ForbiddenException('Credentials incorrect');
+        if (!user.isActive) throw new ForbiddenException('User not activated');
         const pwMatches = await argon.verify(user.password, dto.password);
         if (!pwMatches) throw new ForbiddenException('Credentials incorrect');
 
@@ -101,7 +101,7 @@ export class AuthService {
 
     async signToken(userId: string, email: string, role: string) {
         const payload = { sub: userId, email, role };
-        const expiresIn = '15m';
+        const expiresIn = '60m';
         const token = await this.jwtService.signAsync(payload, {
             expiresIn: expiresIn,
         });

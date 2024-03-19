@@ -27,3 +27,10 @@ export class BadRequestException extends HttpException {
         super(message || 'Bad Request', HttpStatus.BAD_REQUEST);
     }
 }
+
+export class NotFoundException extends HttpException {
+    constructor(message?: string, error?: Error) {
+        if (error) console.log(error);
+        super(message || 'Bad Request', HttpStatus.NOT_FOUND);
+    }
+}

@@ -42,4 +42,10 @@ export class UserService {
 
         return { users: users };
     }
+
+    async deleteMe(req: Request) {
+        await this.prisma.user.delete({ where: { id: req['user'].sub } });
+
+        return { message: 'User deleted' };
+    }
 }
