@@ -11,7 +11,7 @@ export class SubCategoryService {
     async getAll() {
         const subCategories = await this.prisma.subCategory.findMany();
 
-        return { subCategories: subCategories };
+        return { subCategories };
     }
 
     async getById(id: string) {
@@ -21,7 +21,7 @@ export class SubCategoryService {
 
         if (!subCategory) throw new NotFoundException('Subcategory not found');
 
-        return { subCategory: subCategory };
+        return { subCategory };
     }
 
     async create(dto: CreateSubCategoryDto) {
@@ -30,7 +30,7 @@ export class SubCategoryService {
                 data: dto,
             });
 
-            return { message: 'Subcategory created succesfully', subCategory: subCategory };
+            return { message: 'Subcategory created succesfully', subCategory };
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {

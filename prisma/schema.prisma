@@ -14,20 +14,20 @@ enum Role {
 }
 
 model User {
-  id           String         @id @default(uuid())
-  username     String         @unique
-  email        String         @unique
-  role         Role           @default(MEMBER)
-  password     String
-  name         String
-  phone        String?
-  address      String?
-  profile_url  String?
-  isActive     Boolean        @default(false)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @default(now())
-  activationToken String?     @unique
-  refreshToken String?        @unique
+  id              String         @id @default(uuid())
+  username        String         @unique
+  email           String         @unique
+  role            Role           @default(MEMBER)
+  password        String
+  name            String
+  phone           String?
+  address         String?
+  profile_url     String?
+  isActive        Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @default(now())
+  activationToken String?        @unique
+  refreshToken    String?        @unique
 
   @@map("users")
 }
@@ -45,8 +45,32 @@ model SubCategory {
   id           String         @id @default(uuid())
   name         String         @unique
   description  String?
-  categoryId String
-  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId   String
+  category     Category       @relation(fields: [categoryId], references: [id])
+  products     Product[]
 
   @@map("sub_categories")
+}
+
+model Product {
+  id            String         @id @default(uuid())
+  name          String         
+  description   String?
+  price         Float
+  quantity      Int
+  discount      Float
+  subCategoryId String
+  subCategory   SubCategory    @relation(fields: [subCategoryId], references: [id])
+  images        Image[]
+
+  @@map("products")
+}
+
+model Image {
+  id            String         @id @default(uuid())
+  route         String
+  productId     String
+  product       Product        @relation(fields: [productId], references: [id])
+
+  @@map("images")
 }

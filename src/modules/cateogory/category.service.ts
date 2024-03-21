@@ -11,7 +11,7 @@ export class CategoryService {
     async getAll() {
         const categories = await this.prisma.category.findMany();
 
-        return { categories: categories };
+        return { categories };
     }
 
     async getById(id: string) {
@@ -21,7 +21,7 @@ export class CategoryService {
 
         if (!category) throw new NotFoundException('Category not found');
 
-        return { category: category };
+        return { category };
     }
 
     async create(dto: CreateCategoryDto) {
@@ -30,7 +30,7 @@ export class CategoryService {
                 data: dto,
             });
 
-            return { message: 'Category created succesfully', category: category };
+            return { message: 'Category created succesfully', category };
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {

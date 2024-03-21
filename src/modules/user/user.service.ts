@@ -13,7 +13,7 @@ export class UserService {
         delete user.activationToken;
         delete user.refreshToken;
 
-        return { user: user };
+        return { user };
     }
 
     async updateMe(req: Request, dto: UpdateUserDto) {
@@ -25,7 +25,7 @@ export class UserService {
         delete user.activationToken;
         delete user.refreshToken;
 
-        return { user: user };
+        return { user };
     }
 
     async getAll(req: Request) {
@@ -40,7 +40,7 @@ export class UserService {
             delete user.refreshToken;
         });
 
-        return { users: users };
+        return { users };
     }
 
     async deleteMe(req: Request) {
