@@ -1,14 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create.dto';
 
 @Controller('categories')
 export class CategoryController {
-    constructor(
-        private prisma: PrismaService,
-        private categoryService: CategoryService
-    ) {}
+    constructor(private categoryService: CategoryService) {}
 
     @Get()
     getAll() {

@@ -1,14 +1,10 @@
 import { Body, Controller, Delete, Get, Patch, Req } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dto/update.dto';
 
 @Controller('users')
 export class UserController {
-    constructor(
-        private prisma: PrismaService,
-        private userService: UserService
-    ) {}
+    constructor(private userService: UserService) {}
 
     @Get()
     getAll(@Req() req: Request) {
