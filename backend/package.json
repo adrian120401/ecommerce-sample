@@ -1,9 +1,9 @@
 {
-  "name": "ecommerce-sample",
+  "name": "e-commerce",
   "version": "0.0.1",
   "description": "",
   "author": "",
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prisma:dev:deploy": "prisma migrate deploy",
