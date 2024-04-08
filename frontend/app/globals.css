@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: rgb(196, 198, 201);
+    --background: rgb(246, 242, 247);
     --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
@@ -71,6 +71,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[var(--background)] text-foreground h-[100vh];
   }
 }

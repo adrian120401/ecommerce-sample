@@ -52,14 +52,14 @@ export const MainNav: React.FC = () => {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
         <NavbarItem>
+          <Link href="/login" className="text-white">Login</Link>
+        </NavbarItem>
+{/*         <NavbarItem>
           <Button as={Link} color="secondary" href="#" variant="flat">
             Sign Up
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarMenu>

@@ -1,10 +1,11 @@
-import Image from "next/image";
-import { MainNav } from "@/components/main-nav"
+import { MainNav } from '@/components/main-nav';
 
 export default function Home() {
-  return (
-    <main className="">
-        <MainNav />
-    </main>
-  );
+    return (
+        <main className="">
+            <nav>
+                <MainNav />
+            </nav>
+        </main>
+    );
 }
